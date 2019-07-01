@@ -5,6 +5,6 @@ from django.contrib.auth.models import User
 from datetime import datetime
 
 class Tweet(models.Model):
-    content = models.CharField(max_length=32)
+    content = models.CharField(max_length=140)
     date = models.DateTimeField(default=datetime.now)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)

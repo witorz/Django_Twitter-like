@@ -1,0 +1,16 @@
+{% extends 'twitter/base.html' %}
+
+{% block content %}
+
+{% for tweet in tweets %}
+<div>{{ tweet.content }}</div> <div> {{ tweet.date}} </div> <br>
+{% endfor %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit" value="Submit">O </button>
+</form>
+
+
+{% endblock %}

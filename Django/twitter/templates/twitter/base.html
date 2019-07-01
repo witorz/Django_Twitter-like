@@ -1,5 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+<header>
+    {% if user.is_authenticated %}
+  Hi {{ user.username }}!
+
+  <a href="{% url 'logout' %}"> [Wyloguj się]</a>
+    <p></p>
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">login</a>
+{% endif %}
+</header>
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Witamy na stronie głównej serwisu{% endblock %}</title>
@@ -8,4 +19,5 @@
   {% block content %}
   {% endblock %}
 </body>
+
 </html>

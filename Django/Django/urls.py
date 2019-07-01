@@ -15,10 +15,16 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from twitter.views import MainView
+from twitter.views import MainView, TweetView, LoggedOutView
+from django.urls import include, path
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'', MainView.as_view(), name='base'),
+    url(r'^$', MainView.as_view(), name='index'),
+    url(r'^tweets/', TweetView.as_view(), name='tweets'),
+    url(r'^/accounts/logout/logged_out/', LoggedOutView.as_view(), name='logout'),
+]
 
+urlpatterns += [
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
